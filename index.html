@@ -27,6 +27,10 @@
         /* Hide sections by default for tab switching */
         .view-section { display: none; }
         .view-section.active { display: block; }
+
+        /* Hide inactive sliders in the Villas view */
+        .villa-segment { display: none; }
+        .villa-segment.active { display: block; animation: fadeIn 0.4s ease-in-out; }
     </style>
 </head>
 <body class="min-h-screen bg-slate-50 font-sans text-slate-800">
@@ -80,11 +84,14 @@
         <div id="home-view" class="view-section active fade-in">
             <!-- Hero Section -->
             <div class="relative h-[85vh] flex items-center justify-center overflow-hidden">
-                <!-- Hero Background Image from images/ folder -->
-                <!-- The fallback linear-gradient shows if the image is missing -->
-                <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('images/hero-bg.jpg'), linear-gradient(to right, #064e3b, #022c22);">
+                <!-- Hero Video Background from videos/ folder -->
+                <!-- The fallback bg color shows if the video takes a moment to load -->
+                <div class="absolute inset-0 z-0 bg-emerald-950 overflow-hidden">
+                    <video autoplay loop muted playsinline class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 opacity-70">
+                        <source src="videos/hero-video.mp4" type="video/mp4">
+                    </video>
                     <div class="absolute inset-0 bg-emerald-950/40 mix-blend-multiply"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
                 </div>
 
                 <!-- Hero Content -->
@@ -100,25 +107,33 @@
                     </p>
                     
                     <!-- Hero Action Bar -->
-                    <div class="bg-white p-4 md:p-6 rounded-lg shadow-2xl max-w-4xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <div class="bg-white p-4 md:p-6 rounded-xl shadow-2xl max-w-4xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between">
                         <div class="flex items-center gap-3 text-left w-full md:w-auto px-4 border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0">
-                            <i data-lucide="map-pin" class="text-emerald-700 w-8 h-8"></i>
-                            <div>
-                                <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Location</p>
-                                <p class="text-slate-800 font-medium">Pocharam, Hyd</p>
-                            </div>
+                            <a href="Hiwa-Nirvana-Brochure.pdf" download class="flex items-center gap-4 group w-full">
+                                <div class="bg-emerald-50 p-3 rounded-full group-hover:bg-emerald-100 group-hover:scale-110 transition-all duration-300">
+                                    <i data-lucide="download" class="text-emerald-700 w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Brochure</p>
+                                    <p class="text-slate-800 font-medium whitespace-nowrap">Download PDF</p>
+                                </div>
+                            </a>
                         </div>
                         <div class="flex items-center gap-3 text-left w-full md:w-auto px-4 border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0">
-                            <i data-lucide="home" class="text-emerald-700 w-8 h-8"></i>
-                            <div>
-                                <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Property Type</p>
-                                <p class="text-slate-800 font-medium">Premium Villas</p>
-                            </div>
+                            <a href="https://wa.me/1234567890" target="_blank" class="flex items-center gap-4 group w-full">
+                                <div class="bg-green-50 p-3 rounded-full group-hover:bg-green-100 group-hover:scale-110 transition-all duration-300">
+                                    <i data-lucide="message-circle" class="text-green-600 w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Chat</p>
+                                    <p class="text-slate-800 font-medium whitespace-nowrap">WhatsApp Us</p>
+                                </div>
+                            </a>
                         </div>
                         <div class="w-full md:w-auto pt-2 md:pt-0">
-                             <button onclick="switchTab('villas-view')" class="w-full md:w-auto bg-emerald-900 text-white px-8 py-4 rounded hover:bg-emerald-800 transition-all shadow-md font-medium tracking-wide uppercase text-sm">
-                                Explore Villas
-                            </button>
+                             <a href="tel:+1234567890" class="flex items-center justify-center gap-2 w-full md:w-auto bg-emerald-900 text-white px-8 py-4 rounded-lg hover:bg-emerald-800 transition-all shadow-md font-medium tracking-wide uppercase text-sm">
+                                <i data-lucide="phone" class="w-5 h-5"></i> Call Now
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -215,20 +230,211 @@
         <!-- ================= VILLAS VIEW ================= -->
         <div id="villas-view" class="view-section fade-in pb-24">
             <div class="bg-emerald-900 py-20 px-4 text-center text-white">
-                <h1 class="text-4xl md:text-5xl font-serif mb-4">Villa Specifications</h1>
+                <h1 class="text-4xl md:text-5xl font-serif mb-4">Villa Interious & Specifications</h1>
                 <p class="text-emerald-100/80 max-w-2xl mx-auto font-light">
                     Every detail, from design to landscape, shapes a community where comfort is collective, and luxury is lived together.
                 </p>
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10">
-                <!-- Gallery Preview using Local Images with placehold.co fallback -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16 shadow-2xl rounded-xl overflow-hidden bg-white p-4">
-                    <img src="images/villa-exterior.jpg" alt="Villa Exterior" class="w-full h-80 object-cover rounded-lg" onerror="this.src='https://placehold.co/800x600/e2e8f0/0f172a?text=Save+image+as+villa-exterior.jpg+in+images+folder'">
-                    <div class="grid grid-rows-2 gap-4">
-                        <img src="images/villa-interior-living.jpg" alt="Villa Interior Living" class="w-full h-[152px] object-cover rounded-lg" onerror="this.src='https://placehold.co/800x300/e2e8f0/0f172a?text=Save+image+as+villa-interior-living.jpg+in+images+folder'">
-                        <img src="images/villa-interior-bedroom.jpg" alt="Villa Interior Bedroom" class="w-full h-[152px] object-cover rounded-lg" onerror="this.src='https://placehold.co/800x300/e2e8f0/0f172a?text=Save+image+as+villa-interior-bedroom.jpg+in+images+folder'">
+                
+                <!-- Interior Segmented Image Sliders -->
+                <div class="bg-white shadow-2xl rounded-xl p-4 md:p-6 mb-16 border border-slate-100">
+                    
+                    <!-- Segment Navigation Tabs -->
+                    <div class="flex flex-wrap justify-center gap-3 mb-6">
+                        <button onclick="switchVillaSegment('living')" data-segment="living" class="segment-btn active bg-emerald-900 text-white px-5 py-2 rounded-full text-sm font-medium tracking-wide transition-colors">
+                            Living Areas
+                        </button>
+                        <button onclick="switchVillaSegment('dining')" data-segment="dining" class="segment-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-5 py-2 rounded-full text-sm font-medium tracking-wide transition-colors">
+                            Kitchen & Dining
+                        </button>
+                        <button onclick="switchVillaSegment('bedrooms')" data-segment="bedrooms" class="segment-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-5 py-2 rounded-full text-sm font-medium tracking-wide transition-colors">
+                            Bedrooms
+                        </button>
+                        <button onclick="switchVillaSegment('entertainment')" data-segment="entertainment" class="segment-btn bg-slate-100 text-slate-600 hover:bg-slate-200 px-5 py-2 rounded-full text-sm font-medium tracking-wide transition-colors">
+                            Home Theater
+                        </button>
                     </div>
+
+                    <!-- Sliders Containers -->
+
+                    <!-- Segment 1: Living Areas (4 Images) -->
+                    <div id="segment-living" class="villa-segment active relative w-full overflow-hidden rounded-lg bg-slate-100 group">
+                        <div id="track-living" data-current="0" class="flex transition-transform duration-500 ease-in-out h-[350px] md:h-[600px]">
+                            <!-- Slide 1 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/drawing-hall.jpg" alt="Drawing Hall - Lower Ground Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Drawing+Hall+(Lower+GF)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="sofa" class="w-4 h-4 text-emerald-400"></i> Drawing Hall - Lower Ground Floor
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/living-hall-1.jpg" alt="Living Hall 1 - Upper Ground Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Living+Hall+1+(Upper+GF)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="monitor" class="w-4 h-4 text-emerald-400"></i> Living Hall - Upper Ground Floor
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/living-hall-2.jpg" alt="Living Hall 2 - Upper Ground Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Living+Hall+2+(Upper+GF)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="monitor" class="w-4 h-4 text-emerald-400"></i> Living Hall - Upper Ground Floor
+                                </div>
+                            </div>
+                            <!-- Slide 4 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/family-lounge.jpg" alt="Family Lounge - First Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Family+Lounge+(First+Floor)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="coffee" class="w-4 h-4 text-emerald-400"></i> Family Lounge - First Floor
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Living Controls -->
+                        <button onclick="moveSegmentSlide('living', -1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 text-emerald-900 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        <button onclick="moveSegmentSlide('living', 1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 text-emerald-900 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+                        
+                        <!-- Living Indicators -->
+                        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                            <button onclick="setSegmentSlide('living', 0)" class="dot-living w-3 h-3 rounded-full bg-white shadow-md transition-all"></button>
+                            <button onclick="setSegmentSlide('living', 1)" class="dot-living w-3 h-3 rounded-full bg-white/50 shadow-md transition-all"></button>
+                            <button onclick="setSegmentSlide('living', 2)" class="dot-living w-3 h-3 rounded-full bg-white/50 shadow-md transition-all"></button>
+                            <button onclick="setSegmentSlide('living', 3)" class="dot-living w-3 h-3 rounded-full bg-white/50 shadow-md transition-all"></button>
+                        </div>
+                    </div>
+
+                    <!-- Segment 2: Kitchen & Dining (4 Images) -->
+                    <div id="segment-dining" class="villa-segment relative w-full overflow-hidden rounded-lg bg-slate-100 group">
+                        <div id="track-dining" data-current="0" class="flex transition-transform duration-500 ease-in-out h-[350px] md:h-[600px]">
+                            <!-- Slide 1 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/dining-hall.jpg" alt="Dining Hall - Upper Ground Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Dining+Hall+(Upper+GF)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="utensils" class="w-4 h-4 text-emerald-400"></i> Dining Hall - Upper Ground Floor
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/dining-lift.jpg" alt="Dining Hall & Lift - Upper Ground Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Dining+Hall+&+Lift+(Upper+GF)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="arrow-up-down" class="w-4 h-4 text-emerald-400"></i> Dining Hall & Lift - Upper Ground Floor
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/kitchen-1.jpg" alt="Kitchen 1 - Upper Ground Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Kitchen+1+(Upper+GF)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="chef-hat" class="w-4 h-4 text-emerald-400"></i> Kitchen - Upper Ground Floor
+                                </div>
+                            </div>
+                            <!-- Slide 4 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/kitchen-2.jpg" alt="Kitchen 2 - Upper Ground Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Kitchen+2+(Upper+GF)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="chef-hat" class="w-4 h-4 text-emerald-400"></i> Kitchen - Upper Ground Floor
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Dining Controls -->
+                        <button onclick="moveSegmentSlide('dining', -1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 text-emerald-900 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        <button onclick="moveSegmentSlide('dining', 1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 text-emerald-900 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+                        
+                        <!-- Dining Indicators -->
+                        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                            <button onclick="setSegmentSlide('dining', 0)" class="dot-dining w-3 h-3 rounded-full bg-white shadow-md transition-all"></button>
+                            <button onclick="setSegmentSlide('dining', 1)" class="dot-dining w-3 h-3 rounded-full bg-white/50 shadow-md transition-all"></button>
+                            <button onclick="setSegmentSlide('dining', 2)" class="dot-dining w-3 h-3 rounded-full bg-white/50 shadow-md transition-all"></button>
+                            <button onclick="setSegmentSlide('dining', 3)" class="dot-dining w-3 h-3 rounded-full bg-white/50 shadow-md transition-all"></button>
+                        </div>
+                    </div>
+
+                    <!-- Segment 3: Bedrooms (3 Images) -->
+                    <div id="segment-bedrooms" class="villa-segment relative w-full overflow-hidden rounded-lg bg-slate-100 group">
+                        <div id="track-bedrooms" data-current="0" class="flex transition-transform duration-500 ease-in-out h-[350px] md:h-[600px]">
+                            <!-- Slide 1 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/master-bedroom.jpg" alt="Master Bedroom - First Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Master+Bedroom+(First+Floor)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="bed-double" class="w-4 h-4 text-emerald-400"></i> Master Bedroom - First Floor
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/bedroom-ff.jpg" alt="Bedroom 2 - First Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Bedroom+2+(First+Floor)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="bed" class="w-4 h-4 text-emerald-400"></i> Bedroom (2) - First Floor
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/bedroom-ugf.jpg" alt="Bedroom - Upper Ground Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Bedroom+(Upper+GF)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="bed" class="w-4 h-4 text-emerald-400"></i> Bedroom - Upper Ground Floor
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bedrooms Controls -->
+                        <button onclick="moveSegmentSlide('bedrooms', -1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 text-emerald-900 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        <button onclick="moveSegmentSlide('bedrooms', 1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 text-emerald-900 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+                        
+                        <!-- Bedrooms Indicators -->
+                        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                            <button onclick="setSegmentSlide('bedrooms', 0)" class="dot-bedrooms w-3 h-3 rounded-full bg-white shadow-md transition-all"></button>
+                            <button onclick="setSegmentSlide('bedrooms', 1)" class="dot-bedrooms w-3 h-3 rounded-full bg-white/50 shadow-md transition-all"></button>
+                            <button onclick="setSegmentSlide('bedrooms', 2)" class="dot-bedrooms w-3 h-3 rounded-full bg-white/50 shadow-md transition-all"></button>
+                        </div>
+                    </div>
+
+                    <!-- Segment 4: Entertainment (2 Images) -->
+                    <div id="segment-entertainment" class="villa-segment relative w-full overflow-hidden rounded-lg bg-slate-100 group">
+                        <div id="track-entertainment" data-current="0" class="flex transition-transform duration-500 ease-in-out h-[350px] md:h-[600px]">
+                            <!-- Slide 1 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/home-theater-1.jpg" alt="Home Theater 1 - Second Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Home+Theater+1+(Second+Floor)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="film" class="w-4 h-4 text-emerald-400"></i> Home Theater - Second Floor
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="w-full h-full flex-shrink-0 relative">
+                                <img src="images/home-theater-2.jpg" alt="Home Theater 2 - Second Floor" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/e2e8f0/0f172a?text=Home+Theater+2+(Second+Floor)'">
+                                <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-black/70 backdrop-blur text-white px-4 py-2 rounded shadow-lg text-sm md:text-base tracking-wide flex items-center gap-2">
+                                    <i data-lucide="clapperboard" class="w-4 h-4 text-emerald-400"></i> Home Theater - Second Floor
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Entertainment Controls -->
+                        <button onclick="moveSegmentSlide('entertainment', -1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 text-emerald-900 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        <button onclick="moveSegmentSlide('entertainment', 1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white hover:scale-110 text-emerald-900 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 z-10">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+                        
+                        <!-- Entertainment Indicators -->
+                        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                            <button onclick="setSegmentSlide('entertainment', 0)" class="dot-entertainment w-3 h-3 rounded-full bg-white shadow-md transition-all"></button>
+                            <button onclick="setSegmentSlide('entertainment', 1)" class="dot-entertainment w-3 h-3 rounded-full bg-white/50 shadow-md transition-all"></button>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Specifications Details -->
@@ -576,10 +782,17 @@
 
     <!-- Floating Action Buttons -->
     <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+        <!-- Download Brochure -->
+        <a href="Hiwa-Nirvana-Brochure.pdf" download class="bg-slate-800 text-white p-4 rounded-full shadow-lg hover:bg-slate-900 hover:scale-110 transition-all duration-300 flex items-center justify-center group">
+            <i data-lucide="download" class="w-6 h-6"></i>
+            <span class="absolute right-16 bg-white text-slate-800 text-sm px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Download Brochure</span>
+        </a>
+        <!-- WhatsApp -->
         <a href="https://wa.me/1234567890" target="_blank" class="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 flex items-center justify-center group">
             <i data-lucide="message-circle" class="w-6 h-6"></i>
             <span class="absolute right-16 bg-white text-slate-800 text-sm px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">WhatsApp Us</span>
         </a>
+        <!-- Phone -->
         <a href="tel:+1234567890" class="bg-emerald-900 text-white p-4 rounded-full shadow-lg hover:bg-emerald-800 hover:scale-110 transition-all duration-300 flex items-center justify-center group">
             <i data-lucide="phone" class="w-6 h-6"></i>
             <span class="absolute right-16 bg-white text-slate-800 text-sm px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Call Us</span>
@@ -633,15 +846,10 @@
 
         // 2. Tab Navigation Logic
         function switchTab(tabId) {
-            // Hide all sections
             document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
-            // Show target section
             document.getElementById(tabId).classList.add('active');
-            
-            // Scroll to top
             window.scrollTo(0, 0);
 
-            // Update Desktop Nav Styling
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 if (btn.dataset.target === tabId) {
                     btn.className = "nav-btn text-sm uppercase tracking-wide font-medium transition-colors duration-200 text-emerald-800 border-b-2 border-emerald-800 pb-1";
@@ -650,7 +858,6 @@
                 }
             });
 
-            // Update Mobile Nav Styling
             document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
                 if (btn.dataset.target === tabId) {
                     btn.className = "mobile-nav-btn block w-full text-left px-3 py-4 text-sm uppercase tracking-wider font-medium border-b border-slate-50 text-emerald-800 bg-emerald-50/50";
@@ -659,7 +866,6 @@
                 }
             });
 
-            // Close mobile menu if open
             document.getElementById('mobile-menu').classList.add('hidden');
             let iconElement = document.querySelector('#mobile-menu-btn i');
             iconElement.setAttribute('data-lucide', 'menu');
@@ -712,7 +918,7 @@
         }
 
         [pInput, rInput, yInput].forEach(input => input.addEventListener('input', calculateEMI));
-        calculateEMI(); // Init calculation
+        calculateEMI();
 
         // 5. Generate and handle FAQs
         const faqs = [
@@ -765,9 +971,86 @@
             }
         }
         
-        // Open the first FAQ by default
         setTimeout(() => toggleFAQ(0), 100);
+
+        // 6. Multi-Segment Slider Logic
+        let activeSegmentId = 'living';
+        let globalSlideInterval;
+
+        function switchVillaSegment(segmentId) {
+            activeSegmentId = segmentId;
+
+            // Hide all segments
+            document.querySelectorAll('.villa-segment').forEach(el => el.classList.remove('active'));
+            
+            // Reset button styles
+            document.querySelectorAll('.segment-btn').forEach(el => {
+                el.classList.remove('bg-emerald-900', 'text-white');
+                el.classList.add('bg-slate-100', 'text-slate-600');
+            });
+
+            // Activate chosen segment
+            document.getElementById('segment-' + segmentId).classList.add('active');
+            const activeBtn = document.querySelector(`.segment-btn[data-segment="${segmentId}"]`);
+            activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+            activeBtn.classList.add('bg-emerald-900', 'text-white');
+
+            resetGlobalSlideInterval();
+        }
+
+        function moveSegmentSlide(segmentId, direction) {
+            const track = document.getElementById(`track-${segmentId}`);
+            const totalSlides = track.children.length;
+            let currentSlide = parseInt(track.getAttribute('data-current')) || 0;
+
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            
+            track.setAttribute('data-current', currentSlide);
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update specific indicators
+            const dots = document.querySelectorAll(`.dot-${segmentId}`);
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-white/50');
+                    dot.classList.add('bg-white');
+                } else {
+                    dot.classList.remove('bg-white');
+                    dot.classList.add('bg-white/50');
+                }
+            });
+
+            resetGlobalSlideInterval();
+        }
+
+        function setSegmentSlide(segmentId, index) {
+            const track = document.getElementById(`track-${segmentId}`);
+            track.setAttribute('data-current', index);
+            track.style.transform = `translateX(-${index * 100}%)`;
+
+            const dots = document.querySelectorAll(`.dot-${segmentId}`);
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-white/50');
+                    dot.classList.add('bg-white');
+                } else {
+                    dot.classList.remove('bg-white');
+                    dot.classList.add('bg-white/50');
+                }
+            });
+
+            resetGlobalSlideInterval();
+        }
+
+        function resetGlobalSlideInterval() {
+            clearInterval(globalSlideInterval);
+            globalSlideInterval = setInterval(() => moveSegmentSlide(activeSegmentId, 1), 5000);
+        }
+        
+        // Start Auto Slide
+        resetGlobalSlideInterval();
     </script>
 </body>
 </html>
+
 

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiwa Nirvana | Premium Villas at Pocharam</title>
+    
+    <!-- Tailwind CSS (No installation needed) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Smooth scrolling and fade animations */
+        html { scroll-behavior: smooth; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom scrollbar for a premium feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8fafc; }
+        ::-webkit-scrollbar-thumb { background: #064e3b; border-radius: 4px; }
+        
+        /* Hide sections by default for tab switching */
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 font-sans text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md z-50 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex items-center cursor-pointer" onclick="switchTab('home-view')">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-serif font-bold text-emerald-900 tracking-widest uppercase">Hiwa</span>
+                        <span class="text-sm font-light text-emerald-700 tracking-[0.3em] uppercase">Nirvana</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <button onclick="switchTab('home-view')" class="nav-btn text-sm uppercase tracking-wide font-medium transition-colors duration-200 text-emerald-800 border-b-2 border-emerald-800 pb-1" data-target="home-view">Home</button>
+                    <button onclick="switchTab('villas-view')" class="nav-btn text-sm uppercase tracking-wide font-medium transition-colors duration-200 text-slate-500 hover:text-emerald-700" data-target="villas-view">Villas</button>
+                    <button onclick="switchTab('location-view')" class="nav-btn text-sm uppercase tracking-wide font-medium transition-colors duration-200 text-slate-500 hover:text-emerald-700" data-target="location-view">Location</button>
+                    <button onclick="switchTab('faq-view')" class="nav-btn text-sm uppercase tracking-wide font-medium transition-colors duration-200 text-slate-500 hover:text-emerald-700" data-target="faq-view">FAQ & About</button>
+                    <button onclick="switchTab('contact-view')" class="bg-emerald-900 text-white px-6 py-2.5 rounded-sm hover:bg-emerald-800 transition-colors text-sm uppercase tracking-wider font-medium shadow-md">Enquire Now</button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-emerald-900 hover:text-emerald-700 focus:outline-none">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <button onclick="switchTab('home-view')" class="mobile-nav-btn block w-full text-left px-3 py-4 text-sm uppercase tracking-wider font-medium border-b border-slate-50 text-emerald-800 bg-emerald-50/50" data-target="home-view">Home</button>
+                <button onclick="switchTab('villas-view')" class="mobile-nav-btn block w-full text-left px-3 py-4 text-sm uppercase tracking-wider font-medium border-b border-slate-50 text-slate-600" data-target="villas-view">Villas</button>
+                <button onclick="switchTab('location-view')" class="mobile-nav-btn block w-full text-left px-3 py-4 text-sm uppercase tracking-wider font-medium border-b border-slate-50 text-slate-600" data-target="location-view">Location</button>
+                <button onclick="switchTab('faq-view')" class="mobile-nav-btn block w-full text-left px-3 py-4 text-sm uppercase tracking-wider font-medium border-b border-slate-50 text-slate-600" data-target="faq-view">FAQ & About</button>
+                <button onclick="switchTab('contact-view')" class="mobile-nav-btn block w-full text-left px-3 py-4 text-sm uppercase tracking-wider font-medium border-b border-slate-50 text-slate-600" data-target="contact-view">Contact Us</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="pt-20">
+
+        <!-- ================= HOME VIEW ================= -->
+        <div id="home-view" class="view-section active fade-in">
+            <!-- Hero Section -->
+            <div class="relative h-[85vh] flex items-center justify-center overflow-hidden">
+                <!-- Hero Background Image from images/ folder -->
+                <!-- The fallback linear-gradient shows if the image is missing -->
+                <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('images/hero-bg.jpg'), linear-gradient(to right, #064e3b, #022c22);">
+                    <div class="absolute inset-0 bg-emerald-950/40 mix-blend-multiply"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16">
+                    <span class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm tracking-[0.2em] uppercase mb-6 shadow-lg">
+                        VMIH Infra Developers Presents
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight drop-shadow-xl">
+                        Dreams Find Form <br/><span class="italic text-emerald-100">at Nirvana</span>
+                    </h1>
+                    <p class="text-lg md:text-2xl text-slate-100 font-light mb-12 drop-shadow-md max-w-3xl mx-auto">
+                        Premium Luxury Villas @ Pocharam. <br class="md:hidden"/>A Horizon of Peaceful Abodes.
+                    </p>
+                    
+                    <!-- Hero Action Bar -->
+                    <div class="bg-white p-4 md:p-6 rounded-lg shadow-2xl max-w-4xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between">
+                        <div class="flex items-center gap-3 text-left w-full md:w-auto px-4 border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0">
+                            <i data-lucide="map-pin" class="text-emerald-700 w-8 h-8"></i>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Location</p>
+                                <p class="text-slate-800 font-medium">Pocharam, Hyd</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 text-left w-full md:w-auto px-4 border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0">
+                            <i data-lucide="home" class="text-emerald-700 w-8 h-8"></i>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Property Type</p>
+                                <p class="text-slate-800 font-medium">Premium Villas</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-auto pt-2 md:pt-0">
+                             <button onclick="switchTab('villas-view')" class="w-full md:w-auto bg-emerald-900 text-white px-8 py-4 rounded hover:bg-emerald-800 transition-all shadow-md font-medium tracking-wide uppercase text-sm">
+                                Explore Villas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Introduction Snippet -->
+            <section class="py-24 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl md:text-4xl font-serif text-emerald-900 mb-6">Horizon of Peaceful Abodes</h2>
+                    <div class="w-24 h-1 bg-emerald-600 mx-auto mb-8"></div>
+                    <p class="max-w-4xl mx-auto text-lg text-slate-600 leading-relaxed font-light">
+                        Across Pocharam's growing landscape, villas rise in harmony with light and green. 
+                        Each home is shaped for comfort, planned with elegance, and held in quiet assurance. 
+                        Here, luxury feels natural, security is woven into design, and every evening carries 
+                        the glow of a dream fulfilled, a horizon where life finds its calm reward.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Amenities -->
+            <section class="py-24 bg-slate-50 border-t border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-serif text-emerald-900 mb-4">Project Facilities & Amenities</h2>
+                        <p class="text-slate-500 max-w-2xl mx-auto">Gathered in quiet pride. Homes of harmony together. Designed for a community where comfort is collective.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+                        <!-- Amenity 1 -->
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center">
+                            <div class="text-emerald-700 bg-emerald-50 p-4 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="trees" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-slate-800">65% Open Space</h3>
+                        </div>
+                        <!-- Amenity 2 -->
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center">
+                            <div class="text-emerald-700 bg-emerald-50 p-4 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="waves" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-slate-800">Terrace Swimming Pool</h3>
+                        </div>
+                        <!-- Amenity 3 -->
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center">
+                            <div class="text-emerald-700 bg-emerald-50 p-4 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="building" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-slate-800">14,000 Sq.Ft Clubhouse</h3>
+                        </div>
+                        <!-- Amenity 4 -->
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center">
+                            <div class="text-emerald-700 bg-emerald-50 p-4 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="home" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-slate-800">Children's Activity Zone</h3>
+                        </div>
+                        <!-- Amenity 5 -->
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center">
+                            <div class="text-emerald-700 bg-emerald-50 p-4 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="check-circle" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-slate-800">HMDA + TG RERA Approved</h3>
+                        </div>
+                        <!-- Amenity 6 -->
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center">
+                            <div class="text-emerald-700 bg-emerald-50 p-4 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="shield" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-slate-800">Grand Entrance Security</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-20 bg-emerald-900 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-800 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-emerald-800 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"></div>
+                <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                    <h2 class="text-3xl md:text-5xl font-serif mb-6">Ready to Experience Nirvana?</h2>
+                    <p class="text-emerald-100 mb-10 text-lg font-light">Schedule a site visit today and see how our meticulously designed villas can be your next sanctuary.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="switchTab('contact-view')" class="bg-white text-emerald-900 px-8 py-4 rounded shadow-lg font-medium uppercase tracking-wide hover:bg-slate-50 transition-colors">
+                            Contact Us
+                        </button>
+                        <button onclick="switchTab('villas-view')" class="bg-emerald-800 text-white border border-emerald-700 px-8 py-4 rounded shadow-lg font-medium uppercase tracking-wide hover:bg-emerald-700 transition-colors">
+                            View Specifications
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= VILLAS VIEW ================= -->
+        <div id="villas-view" class="view-section fade-in pb-24">
+            <div class="bg-emerald-900 py-20 px-4 text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-serif mb-4">Villa Specifications</h1>
+                <p class="text-emerald-100/80 max-w-2xl mx-auto font-light">
+                    Every detail, from design to landscape, shapes a community where comfort is collective, and luxury is lived together.
+                </p>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10">
+                <!-- Gallery Preview using Local Images with placehold.co fallback -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16 shadow-2xl rounded-xl overflow-hidden bg-white p-4">
+                    <img src="images/villa-exterior.jpg" alt="Villa Exterior" class="w-full h-80 object-cover rounded-lg" onerror="this.src='https://placehold.co/800x600/e2e8f0/0f172a?text=Save+image+as+villa-exterior.jpg+in+images+folder'">
+                    <div class="grid grid-rows-2 gap-4">
+                        <img src="images/villa-interior-living.jpg" alt="Villa Interior Living" class="w-full h-[152px] object-cover rounded-lg" onerror="this.src='https://placehold.co/800x300/e2e8f0/0f172a?text=Save+image+as+villa-interior-living.jpg+in+images+folder'">
+                        <img src="images/villa-interior-bedroom.jpg" alt="Villa Interior Bedroom" class="w-full h-[152px] object-cover rounded-lg" onerror="this.src='https://placehold.co/800x300/e2e8f0/0f172a?text=Save+image+as+villa-interior-bedroom.jpg+in+images+folder'">
+                    </div>
+                </div>
+
+                <!-- Specifications Details -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="p-8 border-b border-slate-100 bg-emerald-50/30">
+                        <h2 class="text-3xl font-serif text-emerald-900 text-center">Interior & Exterior Details</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                        <!-- Electrical -->
+                        <div class="p-8 md:p-12 border-slate-100 border-b md:border-r">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="bg-emerald-100 p-3 rounded-lg text-emerald-700"><i data-lucide="zap"></i></div>
+                                <h3 class="text-2xl font-serif text-slate-800">Electrical</h3>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">Telephone & Data Point in Living area</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">TV Point in Living and Master Bedroom</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">Provision for car charging points in parking area</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">Solar Power Back-up for Common area & Street Lights</span></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Plumbing -->
+                        <div class="p-8 md:p-12 border-slate-100 border-b">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="bg-emerald-100 p-3 rounded-lg text-emerald-700"><i data-lucide="droplet"></i></div>
+                                <h3 class="text-2xl font-serif text-slate-800">Plumbing</h3>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">CPVC Pipes for Water Lines</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">PVC Pipes for Sewage lines</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Painting -->
+                        <div class="p-8 md:p-12 border-slate-100 md:border-r">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="bg-emerald-100 p-3 rounded-lg text-emerald-700"><i data-lucide="paintbrush"></i></div>
+                                <h3 class="text-2xl font-serif text-slate-800">Painting</h3>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">Internal walls: Premium Emulsion Paint</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">External Walls: Weather-proof exterior emulsion paint over nano Polymer waterproof painting</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">Enamel Painting for Grills & Railings</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Security -->
+                        <div class="p-8 md:p-12 border-slate-100">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="bg-emerald-100 p-3 rounded-lg text-emerald-700"><i data-lucide="shield"></i></div>
+                                <h3 class="text-2xl font-serif text-slate-800">Security</h3>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">Provision for CCTV at strategic locations</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">24 hours main gate security</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i><span class="text-slate-600 font-light">Solar Fencing for complete community</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= LOCATION VIEW ================= -->
+        <div id="location-view" class="view-section fade-in pb-24 bg-white">
+            <div class="bg-emerald-900 py-20 px-4 text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-serif mb-4">Location & Connectivity</h1>
+                <p class="text-emerald-100/80 max-w-2xl mx-auto font-light">
+                    Strategically located at Pocharam, providing seamless connectivity to major IT hubs, educational institutions, and healthcare.
+                </p>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <!-- Map Section -->
+                    <div class="lg:col-span-2 rounded-xl overflow-hidden shadow-lg border border-slate-200 h-[500px] relative bg-slate-100">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3806.568406567543!2d78.65345631487711!3d17.43250768805178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb76a1c518b53b%3A0x6a2dbce02cfaebaa!2sPocharam%2C%20Secunderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1683050000000!5m2!1sen!2sin" width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                    <!-- Route Guide -->
+                    <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-sm">
+                        <div class="flex items-center gap-3 mb-8">
+                            <i data-lucide="navigation" class="w-8 h-8 text-emerald-700"></i>
+                            <h3 class="text-2xl font-serif text-emerald-900">Route Guide</h3>
+                        </div>
+                        
+                        <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-emerald-300 before:to-transparent">
+                            <!-- Landmark 1 -->
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 bg-emerald-100 text-emerald-700 shadow shrink-0 z-10 md:translate-x-1/2">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                </div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex justify-between items-center">
+                                    <span class="font-medium text-slate-700 text-sm">Infosys SEZ Campus</span>
+                                    <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded">5 Mins</span>
+                                </div>
+                            </div>
+                            <!-- Landmark 2 -->
+                            <div class="relative flex items-center justify-between md:justify-normal group">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 bg-emerald-100 text-emerald-700 shadow shrink-0 z-10 md:-translate-x-1/2">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                </div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex justify-between items-center">
+                                    <span class="font-medium text-slate-700 text-sm">Ghatkesar Toll Plaza & ORR</span>
+                                    <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded">10 Mins</span>
+                                </div>
+                            </div>
+                            <!-- Landmark 3 -->
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 bg-emerald-100 text-emerald-700 shadow shrink-0 z-10 md:translate-x-1/2">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                </div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex justify-between items-center">
+                                    <span class="font-medium text-slate-700 text-sm">Neelima Inst. of Medical Sciences</span>
+                                    <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded">10 Mins</span>
+                                </div>
+                            </div>
+                            <!-- Landmark 4 -->
+                            <div class="relative flex items-center justify-between md:justify-normal group">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 bg-emerald-100 text-emerald-700 shadow shrink-0 z-10 md:-translate-x-1/2">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                </div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex justify-between items-center">
+                                    <span class="font-medium text-slate-700 text-sm">Narapally Reserve Forest</span>
+                                    <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded">15 Mins</span>
+                                </div>
+                            </div>
+                            <!-- Landmark 5 -->
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 bg-emerald-100 text-emerald-700 shadow shrink-0 z-10 md:translate-x-1/2">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                </div>
+                                <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex justify-between items-center">
+                                    <span class="font-medium text-slate-700 text-sm">Uppal Metro Station</span>
+                                    <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded">20 Mins</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 p-4 bg-emerald-900/5 border border-emerald-900/10 rounded-lg">
+                            <p class="text-sm text-slate-600 font-light leading-relaxed">
+                                <strong class="text-emerald-900 font-medium">Proximity:</strong> Easy access to Warangal Highway, close to major institutions like KPRIT, SITS College, and entertainment zones like Asian Cinemas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= FAQ & ABOUT VIEW ================= -->
+        <div id="faq-view" class="view-section fade-in bg-slate-50 pb-24">
+            <div class="bg-emerald-900 py-20 px-4 text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-serif mb-4">About Us & FAQs</h1>
+                <p class="text-emerald-100/80 max-w-2xl mx-auto font-light">
+                    Discover why Hiwa Nirvana by VMIH Infra Developers is the ultimate choice for your future.
+                </p>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- About Section -->
+                    <div>
+                        <h2 class="text-sm font-bold tracking-[0.2em] text-emerald-600 uppercase mb-3">About The Developer</h2>
+                        <h3 class="text-3xl font-serif text-emerald-900 mb-6">VMIH Infra Developers</h3>
+                        <p class="text-slate-600 font-light leading-relaxed mb-6">
+                            At VMIH Infra Developers, we don't just build houses; we craft homes where memories are nurtured and futures are secured. With a steadfast commitment to quality, transparency, and timely delivery, we have established ourselves as a trusted name in Hyderabad's real estate landscape.
+                        </p>
+                        <p class="text-slate-600 font-light leading-relaxed mb-8">
+                            <strong>Hiwa Nirvana</strong> is our flagship premium villa project in Pocharam. It represents our vision of blending modern architectural elegance with the tranquility of nature. By ensuring 65% open spaces and integrating sustainable living features, we offer a lifestyle that is both luxurious and responsible.
+                        </p>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                             <h4 class="font-serif text-xl text-emerald-900 mb-4">Why Invest in Pocharam?</h4>
+                             <ul class="space-y-3">
+                                 <li class="flex gap-3 text-slate-600 font-light">
+                                      <i data-lucide="check-circle" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                                      <span><strong>IT Boom:</strong> Home to the massive Infosys SEZ and growing IT corridors, ensuring high rental yield and property appreciation.</span>
+                                 </li>
+                                 <li class="flex gap-3 text-slate-600 font-light">
+                                      <i data-lucide="check-circle" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                                      <span><strong>Connectivity:</strong> Proximity to ORR (Outer Ring Road) and the Warangal Highway provides frictionless travel to the rest of the city.</span>
+                                 </li>
+                                 <li class="flex gap-3 text-slate-600 font-light">
+                                      <i data-lucide="check-circle" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                                      <span><strong>Serenity:</strong> Unlike the saturated western corridors, Pocharam offers lush green surroundings, notably near the Narapally Reserve Forest.</span>
+                                 </li>
+                             </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div>
+                        <h2 class="text-sm font-bold tracking-[0.2em] text-emerald-600 uppercase mb-3">Questions & Answers</h2>
+                        <h3 class="text-3xl font-serif text-emerald-900 mb-8">Frequently Asked Questions</h3>
+                        
+                        <div class="space-y-4" id="faq-container">
+                            <!-- FAQs are generated by JS to keep HTML clean, see script below -->
+                        </div>
+                        
+                        <div class="mt-8 bg-emerald-50 p-6 rounded-lg flex items-center gap-4">
+                            <i data-lucide="info" class="w-8 h-8 text-emerald-700 shrink-0"></i>
+                            <div>
+                                <h4 class="font-medium text-emerald-900">Still have questions?</h4>
+                                <p class="text-sm text-emerald-700/80 font-light mt-1">Our sales team is available 24/7 to clear your doubts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= CONTACT & LOAN VIEW ================= -->
+        <div id="contact-view" class="view-section fade-in bg-white pb-24">
+            <div class="bg-emerald-900 py-20 px-4 text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-serif mb-4">Contact & Financials</h1>
+                <p class="text-emerald-100/80 max-w-2xl mx-auto font-light">
+                    Get in touch with us to book your dream home and plan your finances with our easy loan calculator.
+                </p>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Contact Form -->
+                    <div class="bg-slate-50 p-8 md:p-10 rounded-2xl shadow-sm border border-slate-200 h-fit">
+                        <h2 class="text-3xl font-serif text-emerald-900 mb-2">Enquire Now</h2>
+                        <p class="text-slate-500 font-light mb-8">Fill in your details and our property expert will get back to you.</p>
+                        
+                        <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thank you for your enquiry. We will contact you soon!');">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">First Name *</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Email Address *</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Phone Number *</label>
+                                <input type="tel" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-900 text-white py-4 rounded-lg font-medium tracking-wide hover:bg-emerald-800 transition-colors shadow-md">
+                                Submit Enquiry
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Loan Calculator -->
+                    <div class="flex flex-col gap-8">
+                        <div class="bg-emerald-900 text-white p-8 md:p-10 rounded-2xl shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-6 opacity-10">
+                                <i data-lucide="calculator" class="w-32 h-32"></i>
+                            </div>
+                            
+                            <div class="relative z-10">
+                                <h2 class="text-3xl font-serif mb-2">Home Loan Calculator</h2>
+                                <p class="text-emerald-200 font-light mb-8 text-sm">Estimate your monthly mortgage payments effortlessly.</p>
+
+                                <div class="space-y-6">
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <label class="text-sm font-medium text-emerald-50">Loan Amount (₹)</label>
+                                            <span class="text-sm font-bold text-emerald-300" id="val-principal">₹2,00,00,000</span>
+                                        </div>
+                                        <input type="range" id="calc-principal" min="1000000" max="100000000" step="500000" value="20000000" class="w-full h-2 bg-emerald-800 rounded-lg appearance-none cursor-pointer accent-emerald-400">
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <label class="text-sm font-medium text-emerald-50">Interest Rate (%)</label>
+                                            <span class="text-sm font-bold text-emerald-300" id="val-rate">8.5% p.a.</span>
+                                        </div>
+                                        <input type="range" id="calc-rate" min="5" max="15" step="0.1" value="8.5" class="w-full h-2 bg-emerald-800 rounded-lg appearance-none cursor-pointer accent-emerald-400">
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between mb-2">
+                                            <label class="text-sm font-medium text-emerald-50">Loan Tenure (Years)</label>
+                                            <span class="text-sm font-bold text-emerald-300" id="val-years">20 Years</span>
+                                        </div>
+                                        <input type="range" id="calc-years" min="5" max="30" step="1" value="20" class="w-full h-2 bg-emerald-800 rounded-lg appearance-none cursor-pointer accent-emerald-400">
+                                    </div>
+                                </div>
+
+                                <div class="mt-10 pt-8 border-t border-emerald-800">
+                                    <p class="text-center text-sm text-emerald-200 uppercase tracking-widest mb-2">Estimated EMI</p>
+                                    <p class="text-center text-4xl md:text-5xl font-serif text-white">
+                                        <span id="calc-emi">₹1,73,565</span><span class="text-lg font-sans text-emerald-300">/mo</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Details Card -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                            <h3 class="font-serif text-2xl text-emerald-900 mb-6 border-b border-slate-100 pb-4">Direct Contact</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-emerald-50 p-3 rounded-full text-emerald-700">
+                                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-slate-800">Site Address</p>
+                                        <p class="text-slate-500 font-light text-sm mt-1 leading-relaxed">Hiwa Nirvana, Pocharam, <br/>Near Infosys SEZ, Hyderabad, Telangana.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-emerald-50 p-3 rounded-full text-emerald-700">
+                                        <i data-lucide="phone" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-slate-800">Call Us</p>
+                                        <p class="text-slate-500 font-light text-sm mt-1">+91 98765 43210</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-emerald-50 p-3 rounded-full text-emerald-700">
+                                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-slate-800">Email Us</p>
+                                        <p class="text-slate-500 font-light text-sm mt-1">info@hiwanirvana.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+        <a href="https://wa.me/1234567890" target="_blank" class="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 flex items-center justify-center group">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+            <span class="absolute right-16 bg-white text-slate-800 text-sm px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">WhatsApp Us</span>
+        </a>
+        <a href="tel:+1234567890" class="bg-emerald-900 text-white p-4 rounded-full shadow-lg hover:bg-emerald-800 hover:scale-110 transition-all duration-300 flex items-center justify-center group">
+            <i data-lucide="phone" class="w-6 h-6"></i>
+            <span class="absolute right-16 bg-white text-slate-800 text-sm px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Call Us</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 text-white/80 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <div class="flex flex-col mb-6">
+                        <span class="text-3xl font-serif font-bold text-white tracking-widest uppercase">Hiwa</span>
+                        <span class="text-sm font-light text-emerald-300 tracking-[0.3em] uppercase">Nirvana</span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6 font-light">
+                        Luxury Villas @ Pocharam. A horizon of peaceful abodes where luxury feels natural, security is woven into design, and every evening carries the glow of a dream fulfilled.
+                    </p>
+                    <div class="text-xs uppercase tracking-widest text-emerald-400">By VMIH Infra Developers</div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-serif mb-6 text-white border-b border-emerald-800 pb-2 inline-block">Quick Links</h4>
+                    <ul class="space-y-3 text-sm font-light">
+                        <li onclick="switchTab('home-view')" class="hover:text-emerald-300 cursor-pointer transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>Home</li>
+                        <li onclick="switchTab('villas-view')" class="hover:text-emerald-300 cursor-pointer transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>Villas</li>
+                        <li onclick="switchTab('location-view')" class="hover:text-emerald-300 cursor-pointer transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>Location</li>
+                        <li onclick="switchTab('faq-view')" class="hover:text-emerald-300 cursor-pointer transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>FAQ</li>
+                        <li onclick="switchTab('contact-view')" class="hover:text-emerald-300 cursor-pointer transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>Contact Us</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-serif mb-6 text-white border-b border-emerald-800 pb-2 inline-block">Contact Info</h4>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li class="flex items-start gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i><span>Pocharam, Near Infosys SEZ,<br/>Hyderabad, Telangana</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="phone" class="w-5 h-5 text-emerald-400 shrink-0"></i><span>+91 98765 43210</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="message-circle" class="w-5 h-5 text-emerald-400 shrink-0"></i><span>info@hiwanirvana.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-emerald-900 mt-12 pt-8 text-center text-xs font-light tracking-wide text-emerald-400/60">
+                &copy; <span id="year"></span> VMIH Infra Developers. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // 1. Initialize Lucide Icons
+        lucide.createIcons();
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // 2. Tab Navigation Logic
+        function switchTab(tabId) {
+            // Hide all sections
+            document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+            // Show target section
+            document.getElementById(tabId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+
+            // Update Desktop Nav Styling
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.dataset.target === tabId) {
+                    btn.className = "nav-btn text-sm uppercase tracking-wide font-medium transition-colors duration-200 text-emerald-800 border-b-2 border-emerald-800 pb-1";
+                } else {
+                    btn.className = "nav-btn text-sm uppercase tracking-wide font-medium transition-colors duration-200 text-slate-500 hover:text-emerald-700";
+                }
+            });
+
+            // Update Mobile Nav Styling
+            document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+                if (btn.dataset.target === tabId) {
+                    btn.className = "mobile-nav-btn block w-full text-left px-3 py-4 text-sm uppercase tracking-wider font-medium border-b border-slate-50 text-emerald-800 bg-emerald-50/50";
+                } else {
+                    btn.className = "mobile-nav-btn block w-full text-left px-3 py-4 text-sm uppercase tracking-wider font-medium border-b border-slate-50 text-slate-600";
+                }
+            });
+
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+            let iconElement = document.querySelector('#mobile-menu-btn i');
+            iconElement.setAttribute('data-lucide', 'menu');
+            lucide.createIcons();
+        }
+
+        // 3. Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            const iconElement = this.querySelector('i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                iconElement.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                iconElement.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // 4. Loan Calculator Logic
+        const pInput = document.getElementById('calc-principal');
+        const rInput = document.getElementById('calc-rate');
+        const yInput = document.getElementById('calc-years');
+        const pVal = document.getElementById('val-principal');
+        const rVal = document.getElementById('val-rate');
+        const yVal = document.getElementById('val-years');
+        const emiDisplay = document.getElementById('calc-emi');
+
+        const formatCurrency = (num) => {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(num);
+        };
+
+        function calculateEMI() {
+            const p = parseFloat(pInput.value);
+            const r = parseFloat(rInput.value) / 12 / 100;
+            const n = parseFloat(yInput.value) * 12;
+
+            pVal.innerText = formatCurrency(p);
+            rVal.innerText = rInput.value + '% p.a.';
+            yVal.innerText = yInput.value + ' Years';
+
+            if (p > 0 && r > 0 && n > 0) {
+                const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                emiDisplay.innerText = formatCurrency(Math.round(emi));
+            } else {
+                emiDisplay.innerText = '₹0';
+            }
+        }
+
+        [pInput, rInput, yInput].forEach(input => input.addEventListener('input', calculateEMI));
+        calculateEMI(); // Init calculation
+
+        // 5. Generate and handle FAQs
+        const faqs = [
+            { q: "Why is investing in Pocharam the best choice?", a: "Pocharam is one of Hyderabad's fastest-growing IT and residential corridors. Home to major hubs like the Infosys SEZ and surrounded by top educational institutions, it offers high appreciation potential. The serene environment, combined with upcoming infrastructure projects and proximity to the ORR, makes it a perfect blend of peaceful living and smart investment." },
+            { q: "What is the total open space available in the community?", a: "Hiwa Nirvana boasts an expansive 65% open space, thoughtfully designed with green courts, wide avenues, and landscaping to ensure a harmonious connection with nature." },
+            { q: "Is the project approved by governing bodies?", a: "Yes, Hiwa Nirvana is a fully HMDA and TG RERA approved premium villa community, ensuring complete transparency and security for your investment." },
+            { q: "What smart and sustainable features are included?", a: "We have integrated solar power back-up for common areas and street lights, provisions for EV car charging points in parking areas, and robust security including solar fencing." }
+        ];
+
+        const faqContainer = document.getElementById('faq-container');
+        faqs.forEach((faq, index) => {
+            const faqHTML = `
+                <div class="faq-item border border-slate-200 rounded-lg bg-white overflow-hidden transition-all duration-300 cursor-pointer" onclick="toggleFAQ(${index})">
+                    <div class="w-full px-6 py-5 flex justify-between items-center focus:outline-none">
+                        <span class="font-medium text-slate-800 pr-4">${faq.q}</span>
+                        <i data-lucide="chevron-down" id="faq-icon-${index}" class="w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300"></i>
+                    </div>
+                    <div id="faq-answer-${index}" class="px-6 max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="text-slate-600 font-light leading-relaxed border-t border-slate-100 pt-4 pb-5">${faq.a}</p>
+                    </div>
+                </div>
+            `;
+            faqContainer.innerHTML += faqHTML;
+        });
+        lucide.createIcons();
+
+        function toggleFAQ(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            const parent = answer.parentElement;
+            
+            const isOpen = parent.classList.contains('ring-2');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach((item, i) => {
+                item.classList.remove('ring-2', 'ring-emerald-500/20', 'shadow-md');
+                document.getElementById(`faq-answer-${i}`).style.maxHeight = '0px';
+                document.getElementById(`faq-answer-${i}`).style.opacity = '0';
+                document.getElementById(`faq-icon-${i}`).style.transform = 'rotate(0deg)';
+                document.getElementById(`faq-icon-${i}`).classList.remove('text-emerald-600');
+            });
+
+            // Open clicked if it wasn't already open
+            if (!isOpen) {
+                parent.classList.add('ring-2', 'ring-emerald-500/20', 'shadow-md');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                answer.style.opacity = '1';
+                icon.style.transform = 'rotate(180deg)';
+                icon.classList.add('text-emerald-600');
+            }
+        }
+        
+        // Open the first FAQ by default
+        setTimeout(() => toggleFAQ(0), 100);
+    </script>
+</body>
+</html>
+
